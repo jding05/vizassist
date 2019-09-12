@@ -9,9 +9,12 @@ To increase accessibility.
     * Description
     * Reading
     * Other
-
+    
+![](assets/Figure 1.png)
 
 ## How it work (client-side)
+![](assets/Figure 2.png)
+
 * **First page**
     * Camera capture button
     * Image gallery button (upload from local)
@@ -31,6 +34,6 @@ To increase accessibility.
 * Utilize an **IaaS** service model in Google Cloud Engine
 * build an docker container with tomcat image to run our server-side application in GCE Virtual Machine
 
-
+![](assets/Figure 3.png)
 
 
