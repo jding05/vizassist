@@ -31,8 +31,8 @@ To increase accessibility.
 
 
 ## How it work (server-side)
-* Utilize an **IaaS** service model in Google Cloud Engine
-* build an docker container with tomcat image to run our server-side application in GCE Virtual Machine
+* Utilize an **IaaS** service model in Google Compute Engine
+* build an docker container with Tomcat image to run our server-side application in GCE Virtual Machine
 
 ![](/assets/figure3.png)
 
