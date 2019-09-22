@@ -26,7 +26,7 @@ import java.net.HttpURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String UPLOAD_HTTP_URL = "http://34.94.13.112:8080/vizassist/annotate";
+    private static final String UPLOAD_HTTP_URL = "http://173.255.117.247:8080/vizassist/annotate";
 
     private static final int IMAGE_CAPTURE_CODE = 1;
     private static final int SELECT_IMAGE_CODE = 2;
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_capture:
-                mainActivityUIController.updateResultView(getString(R.string.result_placeholder));
+//                mainActivityUIController.updateResultView(getString(R.string.result_placeholder));
                 // see if you have permission, ContextCompat -- related the current state
                 if (ContextCompat.checkSelfPermission(MainActivity.this,
                         Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.action_gallery:
                 // to update the result on UIController (no recongization result yet)
-                mainActivityUIController.updateResultView(getString(R.string.result_placeholder));
+//                mainActivityUIController.updateResultView(getString(R.string.result_placeholder));
                 ImageActions.startGalleryActivity(this, SELECT_IMAGE_CODE);
                 break;
             default:
@@ -128,7 +128,8 @@ public class MainActivity extends AppCompatActivity {
             HttpURLConnection conn = HttpUtilities.makeHttpPostConnectionToUploadImage(bitmap, UPLOAD_HTTP_URL);
             conn.connect();
             if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                mainActivityUIController.updateResultView(HttpUtilities.parseOCRResponse(conn));
+                String result = HttpUtilities.parseOCRResponse(conn);
+                mainActivityUIController.announceRecognitionResult(result);
             } else {
                 mainActivityUIController.showInternetError();
             }
